@@ -23,3 +23,10 @@ export const appStyles = StyleSheet.create({
     fontSize: 14,
   },
 });
+
+export const shadow = {
+  elevation: 2,
+  shadowColor: "black",
+  shadowOffset: { width: 2, height: 2 },
+  shadowOpacity: 0.1,
+};

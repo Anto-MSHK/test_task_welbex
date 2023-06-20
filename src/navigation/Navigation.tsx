@@ -14,7 +14,11 @@ export const Navigation: FC = () => {
         <Stack.Screen
           name="Home"
           component={Home}
-          options={{ title: "Главная", headerShadowVisible: false }}
+          options={{
+            title: "Главная",
+            headerShadowVisible: false,
+            headerTitleStyle: { fontSize: 24 },
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

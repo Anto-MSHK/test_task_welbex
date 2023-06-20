@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   Pressable,
 } from "react-native";
-import { appStyles } from "../../../App";
+import { appStyles, shadow } from "../../../App";
 import { useTranslation } from "react-i18next";
 
 interface TransportCardI {
@@ -67,12 +67,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: "white",
     padding: 15,
-
-    //shadow
-    elevation: 2,
-    shadowColor: "black",
-    shadowOffset: { width: 2, height: 2 },
-    shadowOpacity: 0.1,
+    ...shadow,
   },
   mainInfo: {
     flex: 0,

@@ -1,1 +1,8 @@
-{ "NM": "TV", "CARGO": "cargo", "PASSENGER": "passenger", "SPECIAL": "special" }
+{
+  "NM": "TV",
+  "NAV_1": "List",
+  "NAV_2": "Map",
+  "CARGO": "cargo",
+  "PASSENGER": "passenger",
+  "SPECIAL": "special"
+}
