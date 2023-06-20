@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { View, Text } from "react-native";
+import { StyleSheet, TouchableOpacity, Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { TypeRootStackParamList } from "./types";
@@ -18,9 +18,25 @@ export const Navigation: FC = () => {
             title: "Главная",
             headerShadowVisible: false,
             headerTitleStyle: { fontSize: 24 },
+            headerRight: () => (
+              <TouchableOpacity>
+                <Image
+                  source={require("../icons/settings.png")}
+                  style={styles.settingsIcon}
+                />
+              </TouchableOpacity>
+            ),
           }}
         />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
+
+const styles = StyleSheet.create({
+  settingsIcon: {
+    width: 30,
+    height: 30,
+    marginRight: 10,
+  },
+});
