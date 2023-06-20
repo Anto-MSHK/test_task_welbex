@@ -4,6 +4,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 export type TypeRootStackParamList = {
   Home: undefined;
+  TransportItem: { transportId: number };
 };
 
 export type RootStackScreenProps<T extends keyof TypeRootStackParamList> =

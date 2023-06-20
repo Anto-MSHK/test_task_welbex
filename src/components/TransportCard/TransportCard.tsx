@@ -15,12 +15,14 @@ interface TransportCardI {
   registrationNumber: number;
   type: "cargo" | "passenger" | "special";
   driver: string;
+  onPress?: (registrationNumber: number) => any;
 }
 
 export const TransportCard: FC<TransportCardI> = ({
   registrationNumber,
   type,
   driver,
+  onPress,
 }) => {
   const { t } = useTranslation();
   let pathToIcon = require("../../icons/special.png");
@@ -37,7 +39,12 @@ export const TransportCard: FC<TransportCardI> = ({
   }
 
   return (
-    <TouchableOpacity style={styles.wrapper}>
+    <TouchableOpacity
+      style={styles.wrapper}
+      onPress={() => {
+        onPress(registrationNumber);
+      }}
+    >
       <View style={styles.mainInfo}>
         <Image source={pathToIcon} style={styles.typeImg} />
         <View>

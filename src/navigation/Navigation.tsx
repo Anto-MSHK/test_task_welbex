@@ -4,10 +4,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { TypeRootStackParamList } from "./types";
 import { Home } from "../screens/Home/Home";
+import { TransportItem } from "../screens/TransportItem/TransportItem";
+import { useTranslation } from "react-i18next";
 
 const Stack = createNativeStackNavigator<TypeRootStackParamList>();
 
 export const Navigation: FC = () => {
+  const { t } = useTranslation();
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -27,6 +30,16 @@ export const Navigation: FC = () => {
               </TouchableOpacity>
             ),
           }}
+        />
+        <Stack.Screen
+          name="TransportItem"
+          component={TransportItem}
+          initialParams={{ transportId: 0 }}
+          options={(nav) => ({
+            title: `${t("NM")} #${nav.route.params.transportId}`,
+            headerShadowVisible: false,
+            headerTitleStyle: { fontSize: 24 },
+          })}
         />
       </Stack.Navigator>
     </NavigationContainer>

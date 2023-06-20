@@ -1,10 +1,14 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StackScreenProps } from "@react-navigation/stack";
 import { FC, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { TransportCard } from "./../../components/TransportCard/TransportCard";
+import { StyleSheet, View } from "react-native";
+import { TypeRootStackParamList } from "../../navigation/types";
 import { Navbar } from "./../../components/Navbar/Navbar";
+import { TransportCard } from "./../../components/TransportCard/TransportCard";
 
-export const Home: FC = () => {
+type Props = StackScreenProps<TypeRootStackParamList, "Home">;
+
+export const Home: FC = ({ navigation }: Props) => {
   const { t } = useTranslation();
   const navbarItems = [
     { title: t("NAV_1"), value: "list" },
@@ -25,6 +29,11 @@ export const Home: FC = () => {
           registrationNumber={1000}
           driver="Иванов Иван Иванович"
           type="cargo"
+          onPress={(registrationNumber) => {
+            navigation.navigate("TransportItem", {
+              transportId: registrationNumber,
+            });
+          }}
           key={1}
         />
       </View>
