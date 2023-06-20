@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
   },
   activeItem: {
     borderBottomWidth: 2,
-    borderBottomLeftRadius: 5,
-    borderBottomRightRadius: 5,
+    //  borderBottomLeftRadius: 5,
+    //  borderBottomRightRadius: 5,
     borderColor: "#006CE8",
     color: "#006CE8",
     fontWeight: "700",
