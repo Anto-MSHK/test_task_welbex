@@ -1,7 +1,7 @@
 import "i18next";
 import "react-i18next";
-import ru from "./translations/ru.json";
-import en from "./translations/en.json";
+import ru from "./locales/ru.json";
+import en from "./locales/en.json";
 import { resources } from "./i18n";
 
 declare module "react-i18next" {

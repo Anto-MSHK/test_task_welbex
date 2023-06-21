@@ -12,6 +12,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 export type TypeRootStackParamList = {
   Home: undefined;
   TransportItem: { transportId: number };
+  Settings: undefined;
 };
 
 export type RootStackScreenProps<T extends keyof TypeRootStackParamList> =

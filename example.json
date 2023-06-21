@@ -3,7 +3,7 @@
     "nm": 1213,
     "type": "cargo",
     "driver": "Иванов Иван Иванович",
-    "driverPhone": "89515355696",
+    "driverPhone": "79515355696",
     "coordinate": {
       "latitude": 37.78825,
       "longitude": -122.4324
@@ -13,7 +13,7 @@
     "nm": 4532,
     "type": "passenger",
     "driver": "Петров Пётр Петрович",
-    "driverPhone": "8952355696",
+    "driverPhone": "79896313118",
     "coordinate": {
       "latitude": 20.78825,
       "longitude": -100.4324
@@ -23,7 +23,7 @@
     "nm": 7346,
     "type": "cargo",
     "driver": "Сидоров Сидр Сидорович",
-    "driverPhone": "89515355696",
+    "driverPhone": "79515343276",
     "coordinate": {
       "latitude": 67.78825,
       "longitude": -127.4324
@@ -33,7 +33,7 @@
     "nm": 9574,
     "type": "special",
     "driver": "Антонов Антон Антонович",
-    "driverPhone": "8952355696",
+    "driverPhone": "89352557696",
     "coordinate": {
       "latitude": 30.78825,
       "longitude": -100.4324
@@ -43,7 +43,7 @@
     "nm": 1273,
     "type": "special",
     "driver": "Захаров Захар Захарович",
-    "driverPhone": "89515355696",
+    "driverPhone": "89515355426",
     "coordinate": {
       "latitude": 37.78825,
       "longitude": -92.4324
@@ -53,7 +53,7 @@
     "nm": 3523,
     "type": "passenger",
     "driver": "Михайлов Михаил Михайлович",
-    "driverPhone": "8952355696",
+    "driverPhone": "89526343696",
     "coordinate": {
       "latitude": 60.78825,
       "longitude": -120.4324
@@ -63,7 +63,7 @@
     "nm": 1100,
     "type": "passenger",
     "driver": "Никифоров Никифор Никифорович",
-    "driverPhone": "89515355696",
+    "driverPhone": "89512354296",
     "coordinate": {
       "latitude": 60,
       "longitude": -96.4324
@@ -73,7 +73,7 @@
     "nm": 6416,
     "type": "cargo",
     "driver": "Степанов Степан Степанович",
-    "driverPhone": "8952355696",
+    "driverPhone": "89524324696",
     "coordinate": {
       "latitude": 10.78825,
       "longitude": -85.4324
@@ -83,7 +83,7 @@
     "nm": 1220,
     "type": "cargo",
     "driver": "Юрьев Юрий Юрьевич",
-    "driverPhone": "89515355696",
+    "driverPhone": "89515313396",
     "coordinate": {
       "latitude": 49.78825,
       "longitude": -112.4324

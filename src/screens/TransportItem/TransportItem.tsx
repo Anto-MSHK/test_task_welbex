@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Button } from "react-native";
+import { StyleSheet, View, Text, Button, Linking, Share } from "react-native";
 import { FC, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { appStyles, shadow } from "../../../App";
@@ -31,6 +31,14 @@ export const ListItem: FC<ListItemI> = ({ parameter, value, style }) => {
       </Text>
     </View>
   );
+};
+
+const shareOptions = {
+  title: "Title",
+  message:
+    "Добрый день, подскажите пожалуйста, какой номер заказа у вас сейчас в работе?",
+  url: "whatsapp://app",
+  subject: "whatsapp://app",
 };
 
 export const TransportItem: FC = ({ route }: Props) => {
@@ -89,12 +97,22 @@ export const TransportItem: FC = ({ route }: Props) => {
                 color="#006CE8"
                 textColor="white"
                 type="fill"
+                onPress={() => {
+                  Linking.openURL(`tel:${transport.driverPhone}`);
+                }}
               />
               <CustomButton
                 title="Написать"
                 color="#006CE8"
                 textColor="#006CE8"
                 type="outline"
+                onPress={() => {
+                  Linking.openURL(
+                    `whatsapp://send?text=${t("MESSAGE")}&phone=${
+                      transport.driverPhone
+                    }`
+                  );
+                }}
               />
             </View>
           </View>

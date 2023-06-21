@@ -1,0 +1,21 @@
+{
+  "NM": "TV",
+  "NAV_1": "list",
+  "NAV_2": "map",
+  "CARGO": "cargo",
+  "PASSENGER": "passenger",
+  "SPECIAL": "special",
+
+  "CATEGORY": "type",
+  "DRIVER": "driver",
+  "DRIVER_PHONE": "phone",
+
+  "MESSAGE": "Good afternoon, please tell me what order number you are currently working on?",
+
+  "MAIN": "Main",
+  "SETTINGS": "Settings",
+  "LANG": "Language",
+
+  "RU": "Russian",
+  "EN": "English"
+}
