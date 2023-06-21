@@ -33,14 +33,13 @@ export const MapsView: FC<MapsViewI> = ({ data }) => {
 
       if (latitude < minLatitude) {
         minLatitude = latitude;
-      }
-      if (latitude > maxLatitude) {
+      } else if (latitude > maxLatitude) {
         maxLatitude = latitude;
       }
+
       if (longitude < minLongitude) {
         minLongitude = longitude;
-      }
-      if (longitude > maxLongitude) {
+      } else if (longitude > maxLongitude) {
         maxLongitude = longitude;
       }
 
