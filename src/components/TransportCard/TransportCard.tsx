@@ -11,7 +11,7 @@ import {
 import { appStyles, shadow } from "../../../App";
 import { useTranslation } from "react-i18next";
 
-interface TransportCardI {
+interface TransportCardI extends React.ComponentProps<typeof View> {
   registrationNumber: number;
   type: "cargo" | "passenger" | "special";
   driver: string;
@@ -23,6 +23,7 @@ export const TransportCard: FC<TransportCardI> = ({
   type,
   driver,
   onPress,
+  style,
 }) => {
   const { t } = useTranslation();
   let pathToIcon = require("../../icons/special.png");
@@ -40,7 +41,7 @@ export const TransportCard: FC<TransportCardI> = ({
 
   return (
     <TouchableOpacity
-      style={styles.wrapper}
+      style={{ ...styles.wrapper, ...(style as any) }}
       onPress={() => {
         onPress(registrationNumber);
       }}

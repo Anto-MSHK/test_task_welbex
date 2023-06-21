@@ -40,8 +40,8 @@ export const TransportItem: FC = () => {
           key={"11"}
           description={"11"}
           coordinate={{ latitude: 37.78825, longitude: -122.4324 }}
-          image={require("../../icons/cargo.png")}
-        />
+          image={require("../../icons/map_icons/passenger.png")}
+        ></Marker>
       </MapView>
 
       <View style={styles.content}>
