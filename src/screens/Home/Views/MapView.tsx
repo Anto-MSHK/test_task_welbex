@@ -55,7 +55,7 @@ export const MapsView: FC<MapsViewI> = ({ data }) => {
 
   return (
     <MapView
-      style={{ height: "100%" }}
+      style={{ height: "100%", flex: 1 }}
       initialRegion={{
         latitude: averageLatitude,
         longitude: averageLongitude,

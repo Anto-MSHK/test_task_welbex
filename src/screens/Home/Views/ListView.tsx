@@ -25,8 +25,8 @@ export const ListView: FC<ListViewI> = ({ data }) => {
             }}
             key={trans.nm}
             style={{
+              marginTop: index === 0 ? 55 : 0,
               marginBottom: index === arr.length - 1 ? 15 : 10,
-              marginTop: index === 0 ? 15 : 0,
             }}
           />
         ))}

@@ -29,8 +29,8 @@ export const Navbar: FC<NavbarI> = ({ items, activeItem, onPress }) => {
                 key={item.value + index}
                 style={
                   activeItem === item.value
-                    ? { ...appStyles.h3, ...styles.activeItem }
-                    : appStyles.h3
+                    ? { ...appStyles.h2, ...styles.activeItem }
+                    : appStyles.h2
                 }
               >
                 {item.title}

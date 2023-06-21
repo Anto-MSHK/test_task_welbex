@@ -15,17 +15,24 @@ export const CustomButton: FC<CustomButtonI> = ({
   color,
   textColor,
   onPress,
+  style,
 }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
       style={
         type === "fill"
-          ? { ...styles.button, ...styles.shadow, backgroundColor: color }
+          ? {
+              ...styles.button,
+              ...styles.shadow,
+              backgroundColor: color,
+              ...(style as any),
+            }
           : {
               ...styles.button,
               ...styles.outline,
               borderColor: color,
+              ...(style as any),
             }
       }
     >

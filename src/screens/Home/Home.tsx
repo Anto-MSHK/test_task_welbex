@@ -8,6 +8,7 @@ import { TransportCard } from "./../../components/TransportCard/TransportCard";
 import data from "./../../../example.json";
 import { ListView } from "./Views/ListView";
 import { MapsView } from "./Views/MapView";
+import { ButtonGroup } from "../../components/ButtonGroup/ButtonGroup";
 
 type Props = StackScreenProps<TypeRootStackParamList, "Home">;
 
@@ -29,6 +30,11 @@ export const Home: FC = ({ navigation }: Props) => {
     { title: t("NAV_1"), value: "list" },
     { title: t("NAV_2"), value: "map" },
   ];
+  const filterItems = [
+    { title: t("CARGO"), value: "cargo" },
+    { title: t("PASSENGER"), value: "passenger" },
+    { title: t("SPECIAL"), value: "special" },
+  ];
   const [activeNavItem, setActiveNavItem] = useState(navbarItems[0].value);
   return (
     <View style={styles.wrapper}>
@@ -39,6 +45,7 @@ export const Home: FC = ({ navigation }: Props) => {
           setActiveNavItem(item);
         }}
       />
+      <ButtonGroup items={filterItems} activeItems={["passenger", "special"]} />
       {activeNavItem === "list" ? (
         <ListView data={curData} />
       ) : (
