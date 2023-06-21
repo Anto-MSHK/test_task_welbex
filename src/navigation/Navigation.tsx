@@ -37,7 +37,6 @@ export const Navigation: FC = () => {
           initialParams={{ transportId: 0 }}
           options={(nav) => ({
             title: `${t("NM")} #${nav.route.params.transportId}`,
-            headerShadowVisible: false,
             headerTitleStyle: { fontSize: 24 },
           })}
         />
