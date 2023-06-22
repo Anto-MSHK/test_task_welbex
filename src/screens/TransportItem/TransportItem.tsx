@@ -10,7 +10,7 @@ import { TypeRootStackParamList } from "../../navigation/types";
 import { StackScreenProps } from "@react-navigation/stack";
 import { getTransportIcon } from "../../utils/getTransportIcon";
 
-type Props = StackScreenProps<TypeRootStackParamList, "TransportItem">;
+type TransportItemI = StackScreenProps<TypeRootStackParamList, "TransportItem">;
 
 interface ListItemI extends React.ComponentProps<typeof View> {
   parameter: string;
@@ -34,7 +34,7 @@ export const ListItem: FC<ListItemI> = ({ parameter, value }) => {
   );
 };
 
-export const TransportItem: FC = ({ route }: Props) => {
+export const TransportItem: FC<TransportItemI> = ({ route }) => {
   const { t } = useTranslation();
   const curData: TransportListT[] = data as TransportListT[];
   const transport = curData.find((el) => el.nm === route.params.transportId);
@@ -131,7 +131,6 @@ const styles = StyleSheet.create({
   },
   actions: {
     gap: 10,
-
     marginBottom: 15,
   },
 });

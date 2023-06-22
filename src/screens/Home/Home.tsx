@@ -65,7 +65,6 @@ export const Home: FC<HomeI> = ({}) => {
           data={curData.filter((el) =>
             activeItems.map((it: any) => el.type === it).find((it) => it)
           )}
-          filterItems={activeItems}
         />
       ) : (
         <MapsView

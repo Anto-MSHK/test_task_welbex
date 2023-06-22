@@ -7,9 +7,8 @@ import { HomeScreenNavigationProp } from "../../../navigation/types";
 
 interface ListViewI {
   data: TransportListT[];
-  filterItems: string[];
 }
-export const ListView: FC<ListViewI> = ({ data, filterItems }) => {
+export const ListView: FC<ListViewI> = ({ data }) => {
   const navigation = useNavigation<HomeScreenNavigationProp>();
   return (
     <ScrollView style={{ paddingHorizontal: 15 }}>
