@@ -1,13 +1,5 @@
-import React, { FC, useEffect, useState } from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  TouchableHighlight,
-  TouchableOpacity,
-  Pressable,
-} from "react-native";
+import React, { FC } from "react";
+import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { appStyles } from "../../../App";
 import { useTranslation } from "react-i18next";
 

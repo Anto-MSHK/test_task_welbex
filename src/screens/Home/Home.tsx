@@ -10,7 +10,7 @@ import { ListView } from "./Views/ListView";
 import { MapsView } from "./Views/MapView";
 import { ButtonGroup } from "../../components/ButtonGroup/ButtonGroup";
 
-type Props = StackScreenProps<TypeRootStackParamList, "Home">;
+type HomeI = StackScreenProps<TypeRootStackParamList, "Home">;
 
 export type TransportListT = {
   nm: number;
@@ -23,7 +23,7 @@ export type TransportListT = {
   };
 };
 
-export const Home: FC = ({ navigation }: Props) => {
+export const Home: FC<HomeI> = ({}) => {
   const { t } = useTranslation();
   const curData: TransportListT[] = data as TransportListT[];
   const navbarItems = [
@@ -86,7 +86,6 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     gap: 10,
-    //  marginTop: 15,
     paddingHorizontal: 15,
   },
 });

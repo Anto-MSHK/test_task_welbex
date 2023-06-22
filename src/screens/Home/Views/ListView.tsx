@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView } from "react-native";
 import React, { FC } from "react";
 import { TransportCard } from "../../../components/TransportCard/TransportCard";
 import { TransportListT } from "../Home";
@@ -34,5 +34,3 @@ export const ListView: FC<ListViewI> = ({ data, filterItems }) => {
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({});

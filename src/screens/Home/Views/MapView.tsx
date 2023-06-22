@@ -1,12 +1,11 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React, { FC, useEffect, useState } from "react";
-import { TransportCard } from "../../../components/TransportCard/TransportCard";
 import { TransportListT } from "../Home";
 import { useNavigation } from "@react-navigation/native";
 import { HomeScreenNavigationProp } from "../../../navigation/types";
 import MapView, { Marker } from "react-native-maps";
 import { useTranslation } from "react-i18next";
 import { getAverageCoordinate } from "../../../utils/getAverageCoordinate";
+import { getTransportIcon } from "../../../utils/getTransportIcon";
 
 interface MapsViewI {
   data: TransportListT[];
@@ -40,19 +39,8 @@ export const MapsView: FC<MapsViewI> = ({ data, filterItems }) => {
       }}
     >
       {data &&
-        data.map((trans, index, arr) => {
-          let pathToIcon = require("../../../icons/map_icons/special.png");
-          switch (trans.type) {
-            case "cargo":
-              pathToIcon = require("../../../icons/map_icons/cargo.png");
-              break;
-            case "passenger":
-              pathToIcon = require("../../../icons/map_icons/passenger.png");
-              break;
-            case "special":
-              pathToIcon = require("../../../icons/map_icons/special.png");
-              break;
-          }
+        data.map((trans) => {
+          let pathToIcon = getTransportIcon(trans.type);
           return (
             <Marker
               title={`${t("NM")} #${trans.nm}`}
@@ -71,5 +59,3 @@ export const MapsView: FC<MapsViewI> = ({ data, filterItems }) => {
     </MapView>
   );
 };
-
-const styles = StyleSheet.create({});

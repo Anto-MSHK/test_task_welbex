@@ -1,13 +1,14 @@
-import { StyleSheet, View, Text, Button, Linking, Share } from "react-native";
-import { FC, useEffect, useState } from "react";
+import { StyleSheet, View, Text, Linking } from "react-native";
+import { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { appStyles } from "../../../App";
-import MapView, { Marker, PROVIDER_DEFAULT } from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import data from "./../../../example.json";
 import { TransportListT } from "../Home/Home";
 import { TypeRootStackParamList } from "../../navigation/types";
 import { StackScreenProps } from "@react-navigation/stack";
+import { getTransportIcon } from "../../utils/getTransportIcon";
 
 type Props = StackScreenProps<TypeRootStackParamList, "TransportItem">;
 
@@ -15,7 +16,7 @@ interface ListItemI extends React.ComponentProps<typeof View> {
   parameter: string;
   value: string;
 }
-export const ListItem: FC<ListItemI> = ({ parameter, value, style }) => {
+export const ListItem: FC<ListItemI> = ({ parameter, value }) => {
   return (
     <View style={styles.listItem}>
       <Text style={{ ...appStyles.h3 }}>{parameter}</Text>
@@ -33,30 +34,12 @@ export const ListItem: FC<ListItemI> = ({ parameter, value, style }) => {
   );
 };
 
-const shareOptions = {
-  title: "Title",
-  message:
-    "Добрый день, подскажите пожалуйста, какой номер заказа у вас сейчас в работе?",
-  url: "whatsapp://app",
-  subject: "whatsapp://app",
-};
-
 export const TransportItem: FC = ({ route }: Props) => {
   const { t } = useTranslation();
   const curData: TransportListT[] = data as TransportListT[];
   const transport = curData.find((el) => el.nm === route.params.transportId);
-  let pathToIcon = require("../../icons/map_icons/special.png");
-  switch (transport.type) {
-    case "cargo":
-      pathToIcon = require("../../icons/map_icons/cargo.png");
-      break;
-    case "passenger":
-      pathToIcon = require("../../icons/map_icons/passenger.png");
-      break;
-    case "special":
-      pathToIcon = require("../../icons/map_icons/special.png");
-      break;
-  }
+  let pathToIcon = getTransportIcon(transport.type);
+
   return (
     <View>
       {transport && (

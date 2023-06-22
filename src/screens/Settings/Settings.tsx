@@ -5,7 +5,7 @@ import { StyleSheet, View, Text, Button } from "react-native";
 import { TypeRootStackParamList } from "../../navigation/types";
 import { appStyles } from "../../../App";
 
-type Props = StackScreenProps<TypeRootStackParamList, "Home">;
+type SettingsI = StackScreenProps<TypeRootStackParamList, "Home">;
 
 export type TransportListT = {
   nm: number;
@@ -18,7 +18,7 @@ export type TransportListT = {
   };
 };
 
-export const Settings: FC = ({ navigation }: Props) => {
+export const Settings: FC<SettingsI> = ({}) => {
   const { t, i18n } = useTranslation();
 
   return (

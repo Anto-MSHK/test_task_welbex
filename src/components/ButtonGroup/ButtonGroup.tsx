@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, StyleSheet } from "react-native";
+import { View, ScrollView, StyleSheet } from "react-native";
 import React, { FC } from "react";
 import CustomButton from "../CustomButton/CustomButton";
 
@@ -14,25 +14,14 @@ export const ButtonGroup: FC<ButtonGroupI> = ({
   onPress,
 }) => {
   return (
-    <View
-      style={{
-        flex: 0,
-        position: "absolute",
-        zIndex: 1,
-        elevation: 1,
-        top: 42,
-      }}
-    >
+    <View style={styles.wrapper}>
       <ScrollView
-        style={{
-          flexDirection: "row",
-          marginTop: 5,
-        }}
+        style={styles.scroll}
         horizontal
         showsHorizontalScrollIndicator={false}
       >
         {items &&
-          items.map((item, index, arr) => {
+          items.map((item, index) => {
             const isActive = activeItems.find((it) => it === item.value);
             return (
               <CustomButton
@@ -58,6 +47,17 @@ export const ButtonGroup: FC<ButtonGroupI> = ({
 };
 
 const styles = StyleSheet.create({
+  wrapper: {
+    flex: 0,
+    position: "absolute",
+    zIndex: 1,
+    elevation: 1,
+    top: 42,
+  },
+  scroll: {
+    flexDirection: "row",
+    marginTop: 5,
+  },
   button: {
     paddingHorizontal: 15,
     height: 40,
