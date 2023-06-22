@@ -1,3 +1,7 @@
+/**
+ * Function for getting an icon according to the type.
+ * @param {"cargo" | "passenger" | "special"} type - Type of vehicle. Has the type "cargo" | "passenger" | "special".
+ */
 export const getTransportIcon = (type: "cargo" | "passenger" | "special") => {
   let pathToIcon = undefined;
   switch (type) {

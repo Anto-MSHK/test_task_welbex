@@ -1,5 +1,9 @@
 import { TransportListT } from "../screens/Home/Home";
 
+/**
+ * Getting the average value for points on the map. It is necessary for the correct display of vehicles.
+ * @param {TransportListT[]} data - Information about vehicles. Has the type TransportListT[].
+ */
 export const getAverageCoordinate = (data: TransportListT[]) => {
   let totalLatitude = 0;
   let totalLongitude = 0;

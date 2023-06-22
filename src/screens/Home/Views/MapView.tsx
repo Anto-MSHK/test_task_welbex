@@ -21,12 +21,14 @@ export const MapsView: FC<MapsViewI> = ({ data, filterItems }) => {
   let [averageLongitudeD, setAverageLongitudeD] = useState(0);
 
   useEffect(() => {
-    const cords = getAverageCoordinate(data);
-    setAverageLatitude(cords.averageLatitude);
-    setAverageLongitude(cords.averageLongitude);
-    setAverageLatitudeD(cords.averageLatitudeD);
-    setAverageLongitudeD(cords.averageLongitudeD);
-  }, [filterItems]);
+    if (data && data.length > 0) {
+      const cords = getAverageCoordinate(data);
+      setAverageLatitude(cords.averageLatitude);
+      setAverageLongitude(cords.averageLongitude);
+      setAverageLatitudeD(cords.averageLatitudeD);
+      setAverageLongitudeD(cords.averageLongitudeD);
+    }
+  }, [filterItems]); // Recalculation of the position when changing the filter parameters.
 
   return (
     <MapView

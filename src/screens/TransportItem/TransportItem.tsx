@@ -16,6 +16,7 @@ interface ListItemI extends React.ComponentProps<typeof View> {
   parameter: string;
   value: string;
 }
+
 export const ListItem: FC<ListItemI> = ({ parameter, value }) => {
   return (
     <View style={styles.listItem}>
@@ -34,6 +35,7 @@ export const ListItem: FC<ListItemI> = ({ parameter, value }) => {
   );
 };
 
+// Vehicle page.
 export const TransportItem: FC<TransportItemI> = ({ route }) => {
   const { t } = useTranslation();
   const curData: TransportListT[] = data as TransportListT[];

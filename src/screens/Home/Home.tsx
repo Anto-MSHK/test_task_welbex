@@ -23,18 +23,22 @@ export type TransportListT = {
   };
 };
 
+// The page of all vehicles.
 export const Home: FC<HomeI> = ({}) => {
   const { t } = useTranslation();
   const curData: TransportListT[] = data as TransportListT[];
+
   const navbarItems = [
     { title: t("NAV_1"), value: "list" },
     { title: t("NAV_2"), value: "map" },
   ];
+
   const filterItems = [
     { title: t("CARGO"), value: "cargo" },
     { title: t("PASSENGER"), value: "passenger" },
     { title: t("SPECIAL"), value: "special" },
   ];
+
   const [activeNavItem, setActiveNavItem] = useState(navbarItems[0].value);
   const [activeItems, setActiveItems] = useState(
     filterItems.map((it) => it.value)
@@ -65,14 +69,14 @@ export const Home: FC<HomeI> = ({}) => {
           data={curData.filter((el) =>
             activeItems.map((it: any) => el.type === it).find((it) => it)
           )}
-        />
+        /> // Display in list format.
       ) : (
         <MapsView
           data={curData.filter((el) =>
             activeItems.map((it: any) => el.type === it).find((it) => it)
           )}
           filterItems={activeItems}
-        />
+        /> // Display in map format.
       )}
     </View>
   );

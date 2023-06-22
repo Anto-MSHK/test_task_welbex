@@ -18,6 +18,7 @@ export type TransportListT = {
   };
 };
 
+// Settings page with language selection.
 export const Settings: FC<SettingsI> = ({}) => {
   const { t, i18n } = useTranslation();
 
