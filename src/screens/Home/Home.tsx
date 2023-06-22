@@ -1,5 +1,5 @@
 import { StackScreenProps } from "@react-navigation/stack";
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { StyleSheet, View } from "react-native";
 import { TypeRootStackParamList } from "../../navigation/types";
@@ -36,7 +36,10 @@ export const Home: FC = ({ navigation }: Props) => {
     { title: t("SPECIAL"), value: "special" },
   ];
   const [activeNavItem, setActiveNavItem] = useState(navbarItems[0].value);
-  const [activeItems, setActiveItems] = useState([filterItems[0].value]);
+  const [activeItems, setActiveItems] = useState(
+    filterItems.map((it) => it.value)
+  );
+
   return (
     <View style={styles.wrapper}>
       <Navbar
@@ -58,9 +61,19 @@ export const Home: FC = ({ navigation }: Props) => {
         }}
       />
       {activeNavItem === "list" ? (
-        <ListView data={curData} filterItems={activeItems} />
+        <ListView
+          data={curData.filter((el) =>
+            activeItems.map((it: any) => el.type === it).find((it) => it)
+          )}
+          filterItems={activeItems}
+        />
       ) : (
-        <MapsView data={curData} filterItems={activeItems} />
+        <MapsView
+          data={curData.filter((el) =>
+            activeItems.map((it: any) => el.type === it).find((it) => it)
+          )}
+          filterItems={activeItems}
+        />
       )}
     </View>
   );

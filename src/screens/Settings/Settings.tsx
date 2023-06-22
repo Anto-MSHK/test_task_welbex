@@ -3,9 +3,6 @@ import { FC, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { StyleSheet, View, Text, Button } from "react-native";
 import { TypeRootStackParamList } from "../../navigation/types";
-import { Navbar } from "./../../components/Navbar/Navbar";
-import { TransportCard } from "./../../components/TransportCard/TransportCard";
-import data from "./../../../example.json";
 import { appStyles } from "../../../App";
 
 type Props = StackScreenProps<TypeRootStackParamList, "Home">;

@@ -23,7 +23,10 @@ export const Navbar: FC<NavbarI> = ({ items, activeItem, onPress }) => {
       >
         {items &&
           items.map((item, index) => (
-            <TouchableOpacity onPress={() => onPress(item.value)}>
+            <TouchableOpacity
+              onPress={() => onPress(item.value)}
+              key={item.value}
+            >
               <Text
                 key={item.value + index}
                 style={

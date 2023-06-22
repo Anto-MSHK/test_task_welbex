@@ -6,6 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import { HomeScreenNavigationProp } from "../../../navigation/types";
 import MapView, { Marker } from "react-native-maps";
 import { useTranslation } from "react-i18next";
+import { getAverageCoordinate } from "../../../utils/getAverageCoordinate";
 
 interface MapsViewI {
   data: TransportListT[];
@@ -21,43 +22,17 @@ export const MapsView: FC<MapsViewI> = ({ data, filterItems }) => {
   let [averageLongitudeD, setAverageLongitudeD] = useState(0);
 
   useEffect(() => {
-    let totalLatitude = 0;
-    let totalLongitude = 0;
-    let minLatitude = data[0].coordinate.latitude;
-    let maxLatitude = data[0].coordinate.latitude;
-    let minLongitude = data[0].coordinate.longitude;
-    let maxLongitude = data[0].coordinate.longitude;
-
-    for (let i = 0; i < data.length; i++) {
-      const latitude = data[i].coordinate.latitude;
-      const longitude = data[i].coordinate.longitude;
-
-      if (latitude < minLatitude) {
-        minLatitude = latitude;
-      } else if (latitude > maxLatitude) {
-        maxLatitude = latitude;
-      }
-
-      if (longitude < minLongitude) {
-        minLongitude = longitude;
-      } else if (longitude > maxLongitude) {
-        maxLongitude = longitude;
-      }
-
-      totalLatitude += data[i].coordinate.latitude;
-      totalLongitude += data[i].coordinate.longitude;
-    }
-
-    setAverageLatitude(totalLatitude / data.length);
-    setAverageLongitude(totalLongitude / data.length);
-    setAverageLatitudeD(maxLatitude - minLatitude + 10);
-    setAverageLongitudeD(maxLongitude - minLongitude + 10);
-  }, []);
+    const cords = getAverageCoordinate(data);
+    setAverageLatitude(cords.averageLatitude);
+    setAverageLongitude(cords.averageLongitude);
+    setAverageLatitudeD(cords.averageLatitudeD);
+    setAverageLongitudeD(cords.averageLongitudeD);
+  }, [filterItems]);
 
   return (
     <MapView
       style={{ height: "100%", flex: 1 }}
-      initialRegion={{
+      region={{
         latitude: averageLatitude,
         longitude: averageLongitude,
         latitudeDelta: averageLatitudeD,
@@ -65,38 +40,34 @@ export const MapsView: FC<MapsViewI> = ({ data, filterItems }) => {
       }}
     >
       {data &&
-        data
-          .filter((el) =>
-            filterItems.map((it) => el.type === it).find((it) => it)
-          )
-          .map((trans, index, arr) => {
-            let pathToIcon = require("../../../icons/map_icons/special.png");
-            switch (trans.type) {
-              case "cargo":
-                pathToIcon = require("../../../icons/map_icons/cargo.png");
-                break;
-              case "passenger":
-                pathToIcon = require("../../../icons/map_icons/passenger.png");
-                break;
-              case "special":
-                pathToIcon = require("../../../icons/map_icons/special.png");
-                break;
-            }
-            return (
-              <Marker
-                title={`${t("NM")} #${trans.nm}`}
-                key={trans.nm}
-                description={trans.driver}
-                coordinate={trans.coordinate}
-                image={pathToIcon}
-                onCalloutPress={() => {
-                  navigation.navigate("TransportItem", {
-                    transportId: trans.nm,
-                  });
-                }}
-              />
-            );
-          })}
+        data.map((trans, index, arr) => {
+          let pathToIcon = require("../../../icons/map_icons/special.png");
+          switch (trans.type) {
+            case "cargo":
+              pathToIcon = require("../../../icons/map_icons/cargo.png");
+              break;
+            case "passenger":
+              pathToIcon = require("../../../icons/map_icons/passenger.png");
+              break;
+            case "special":
+              pathToIcon = require("../../../icons/map_icons/special.png");
+              break;
+          }
+          return (
+            <Marker
+              title={`${t("NM")} #${trans.nm}`}
+              key={trans.nm}
+              description={trans.driver}
+              coordinate={trans.coordinate}
+              image={pathToIcon}
+              onCalloutPress={() => {
+                navigation.navigate("TransportItem", {
+                  transportId: trans.nm,
+                });
+              }}
+            />
+          );
+        })}
     </MapView>
   );
 };

@@ -14,27 +14,23 @@ export const ListView: FC<ListViewI> = ({ data, filterItems }) => {
   return (
     <ScrollView style={{ paddingHorizontal: 15 }}>
       {data &&
-        data
-          .filter((el) =>
-            filterItems.map((it) => el.type === it).find((it) => it)
-          )
-          .map((trans, index, arr) => (
-            <TransportCard
-              registrationNumber={trans.nm}
-              driver={trans.driver}
-              type={trans.type}
-              onPress={(registrationNumber) => {
-                navigation.navigate("TransportItem", {
-                  transportId: registrationNumber,
-                });
-              }}
-              key={trans.nm}
-              style={{
-                marginTop: index === 0 ? 55 : 0,
-                marginBottom: index === arr.length - 1 ? 15 : 10,
-              }}
-            />
-          ))}
+        data.map((trans, index, arr) => (
+          <TransportCard
+            registrationNumber={trans.nm}
+            driver={trans.driver}
+            type={trans.type}
+            onPress={(registrationNumber) => {
+              navigation.navigate("TransportItem", {
+                transportId: registrationNumber,
+              });
+            }}
+            key={trans.nm}
+            style={{
+              marginTop: index === 0 ? 55 : 0,
+              marginBottom: index === arr.length - 1 ? 15 : 10,
+            }}
+          />
+        ))}
     </ScrollView>
   );
 };

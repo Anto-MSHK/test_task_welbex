@@ -48,6 +48,7 @@ export const ButtonGroup: FC<ButtonGroupI> = ({
                 onPress={() => {
                   onPress(item.value, !isActive);
                 }}
+                key={item.value}
               />
             );
           })}

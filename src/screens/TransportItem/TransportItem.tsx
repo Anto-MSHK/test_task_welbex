@@ -1,7 +1,7 @@
 import { StyleSheet, View, Text, Button, Linking, Share } from "react-native";
 import { FC, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { appStyles, shadow } from "../../../App";
+import { appStyles } from "../../../App";
 import MapView, { Marker, PROVIDER_DEFAULT } from "react-native-maps";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import data from "./../../../example.json";
@@ -80,7 +80,7 @@ export const TransportItem: FC = ({ route }: Props) => {
           </MapView>
 
           <View style={styles.content}>
-            <View style={styles.list}>
+            <View style={{ ...styles.list, ...appStyles.shadow }}>
               <ListItem
                 parameter={t("CATEGORY")}
                 value={t(transport.type.toUpperCase())}
@@ -93,7 +93,7 @@ export const TransportItem: FC = ({ route }: Props) => {
             </View>
             <View style={styles.actions}>
               <CustomButton
-                title="Позвонить"
+                title={t("CALL")}
                 color="#006CE8"
                 textColor="white"
                 type="fill"
@@ -102,7 +102,7 @@ export const TransportItem: FC = ({ route }: Props) => {
                 }}
               />
               <CustomButton
-                title="Написать"
+                title={t("SEND")}
                 color="#006CE8"
                 textColor="#006CE8"
                 type="outline"
@@ -140,7 +140,6 @@ const styles = StyleSheet.create({
     gap: 15,
     padding: 15,
     borderRadius: 10,
-    ...shadow,
   },
   listItem: {
     alignItems: "center",

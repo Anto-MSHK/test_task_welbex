@@ -17,5 +17,8 @@
   "LANG": "Language",
 
   "RU": "Russian",
-  "EN": "English"
+  "EN": "English",
+
+  "CALL": "To call",
+  "SEND": "To write"
 }
