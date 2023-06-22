@@ -2,12 +2,11 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableHighlight,
   TouchableOpacity,
   ScrollView,
 } from "react-native";
 import React, { FC } from "react";
-import { appStyles, shadow } from "../../../App";
+import { appStyles } from "../../../App";
 
 interface NavbarI {
   items: { title: string; value: string }[];
@@ -16,7 +15,7 @@ interface NavbarI {
 }
 export const Navbar: FC<NavbarI> = ({ items, activeItem, onPress }) => {
   return (
-    <View style={styles.wrapper}>
+    <View style={{ ...styles.wrapper, ...appStyles.shadow }}>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -48,7 +47,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingBottom: 10,
     backgroundColor: "white",
-    ...shadow,
+    elevation: 1,
+    zIndex: 1,
   },
   activeItem: {
     borderBottomWidth: 2,

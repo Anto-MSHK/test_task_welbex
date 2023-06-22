@@ -1,13 +1,18 @@
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, StyleSheet } from "react-native";
 import React, { FC } from "react";
 import CustomButton from "../CustomButton/CustomButton";
 
 interface ButtonGroupI extends React.ComponentProps<typeof View> {
   items: { title: string; value: string }[];
   activeItems: string[];
+  onPress: (item: string, isActive: boolean) => any;
 }
 
-export const ButtonGroup: FC<ButtonGroupI> = ({ items, activeItems }) => {
+export const ButtonGroup: FC<ButtonGroupI> = ({
+  items,
+  activeItems,
+  onPress,
+}) => {
   return (
     <View
       style={{
@@ -22,28 +27,41 @@ export const ButtonGroup: FC<ButtonGroupI> = ({ items, activeItems }) => {
         style={{
           flexDirection: "row",
           marginTop: 5,
-
-          //  height: 50,
         }}
         horizontal
         showsHorizontalScrollIndicator={false}
       >
-        {items && (
-          <CustomButton
-            color="#006CE8"
-            title="грузовые"
-            textColor="#006CE8"
-            type="outline"
-            style={{
-              paddingHorizontal: 15,
-              height: 40,
-              marginRight: 10,
-              marginLeft: 10,
-              backgroundColor: "white",
-            }}
-          />
-        )}
+        {items &&
+          items.map((item, index, arr) => {
+            const isActive = activeItems.find((it) => it === item.value);
+            return (
+              <CustomButton
+                color={isActive ? "#006CE8" : "gray"}
+                title={item.title}
+                textColor={isActive ? "white" : "gray"}
+                type={isActive ? "fill" : "outline"}
+                style={{
+                  ...styles.button,
+                  marginLeft: index === 0 ? 10 : 0,
+                  backgroundColor: isActive ? "#006CE8" : "white",
+                }}
+                onPress={() => {
+                  onPress(item.value, !isActive);
+                }}
+              />
+            );
+          })}
       </ScrollView>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  button: {
+    paddingHorizontal: 15,
+    height: 40,
+    marginRight: 10,
+  },
+});
+
+export default CustomButton;

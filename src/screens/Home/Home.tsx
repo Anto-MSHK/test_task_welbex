@@ -36,6 +36,7 @@ export const Home: FC = ({ navigation }: Props) => {
     { title: t("SPECIAL"), value: "special" },
   ];
   const [activeNavItem, setActiveNavItem] = useState(navbarItems[0].value);
+  const [activeItems, setActiveItems] = useState([filterItems[0].value]);
   return (
     <View style={styles.wrapper}>
       <Navbar
@@ -45,11 +46,21 @@ export const Home: FC = ({ navigation }: Props) => {
           setActiveNavItem(item);
         }}
       />
-      <ButtonGroup items={filterItems} activeItems={["passenger", "special"]} />
+      <ButtonGroup
+        items={filterItems}
+        activeItems={activeItems}
+        onPress={(item, isActive) => {
+          setActiveItems((prev) => {
+            if (isActive) return [...prev, item];
+            else if (prev.length !== 1) return prev.filter((el) => el !== item);
+            else return prev;
+          });
+        }}
+      />
       {activeNavItem === "list" ? (
-        <ListView data={curData} />
+        <ListView data={curData} filterItems={activeItems} />
       ) : (
-        <MapsView data={curData} />
+        <MapsView data={curData} filterItems={activeItems} />
       )}
     </View>
   );

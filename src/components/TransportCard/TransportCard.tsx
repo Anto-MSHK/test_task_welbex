@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   Pressable,
 } from "react-native";
-import { appStyles, shadow } from "../../../App";
+import { appStyles } from "../../../App";
 import { useTranslation } from "react-i18next";
 
 interface TransportCardI extends React.ComponentProps<typeof View> {
@@ -41,7 +41,7 @@ export const TransportCard: FC<TransportCardI> = ({
 
   return (
     <TouchableOpacity
-      style={{ ...styles.wrapper, ...(style as any) }}
+      style={{ ...styles.wrapper, ...appStyles.shadow, ...(style as any) }}
       onPress={() => {
         onPress(registrationNumber);
       }}
@@ -75,7 +75,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: "white",
     padding: 15,
-    ...shadow,
   },
   mainInfo: {
     flex: 0,

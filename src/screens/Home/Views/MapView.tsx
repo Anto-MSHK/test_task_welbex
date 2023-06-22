@@ -9,8 +9,9 @@ import { useTranslation } from "react-i18next";
 
 interface MapsViewI {
   data: TransportListT[];
+  filterItems: string[];
 }
-export const MapsView: FC<MapsViewI> = ({ data }) => {
+export const MapsView: FC<MapsViewI> = ({ data, filterItems }) => {
   const navigation = useNavigation<HomeScreenNavigationProp>();
   const { t } = useTranslation();
 
@@ -64,34 +65,38 @@ export const MapsView: FC<MapsViewI> = ({ data }) => {
       }}
     >
       {data &&
-        data.map((trans, index, arr) => {
-          let pathToIcon = require("../../../icons/map_icons/special.png");
-          switch (trans.type) {
-            case "cargo":
-              pathToIcon = require("../../../icons/map_icons/cargo.png");
-              break;
-            case "passenger":
-              pathToIcon = require("../../../icons/map_icons/passenger.png");
-              break;
-            case "special":
-              pathToIcon = require("../../../icons/map_icons/special.png");
-              break;
-          }
-          return (
-            <Marker
-              title={`${t("NM")} #${trans.nm}`}
-              key={trans.nm}
-              description={trans.driver}
-              coordinate={trans.coordinate}
-              image={pathToIcon}
-              onCalloutPress={() => {
-                navigation.navigate("TransportItem", {
-                  transportId: trans.nm,
-                });
-              }}
-            />
-          );
-        })}
+        data
+          .filter((el) =>
+            filterItems.map((it) => el.type === it).find((it) => it)
+          )
+          .map((trans, index, arr) => {
+            let pathToIcon = require("../../../icons/map_icons/special.png");
+            switch (trans.type) {
+              case "cargo":
+                pathToIcon = require("../../../icons/map_icons/cargo.png");
+                break;
+              case "passenger":
+                pathToIcon = require("../../../icons/map_icons/passenger.png");
+                break;
+              case "special":
+                pathToIcon = require("../../../icons/map_icons/special.png");
+                break;
+            }
+            return (
+              <Marker
+                title={`${t("NM")} #${trans.nm}`}
+                key={trans.nm}
+                description={trans.driver}
+                coordinate={trans.coordinate}
+                image={pathToIcon}
+                onCalloutPress={() => {
+                  navigation.navigate("TransportItem", {
+                    transportId: trans.nm,
+                  });
+                }}
+              />
+            );
+          })}
     </MapView>
   );
 };

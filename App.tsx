@@ -22,11 +22,10 @@ export const appStyles = StyleSheet.create({
   h5: {
     fontSize: 14,
   },
+  shadow: {
+    elevation: 2,
+    shadowColor: "black",
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 0.1,
+  },
 });
-
-export const shadow = {
-  elevation: 2,
-  shadowColor: "black",
-  shadowOffset: { width: 2, height: 2 },
-  shadowOpacity: 0.1,
-};

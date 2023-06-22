@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import React, { FC } from "react";
-import { appStyles, shadow } from "../../../App";
+import { appStyles } from "../../../App";
 
 interface CustomButtonI extends React.ComponentProps<typeof TouchableOpacity> {
   title: string;
@@ -24,8 +24,9 @@ export const CustomButton: FC<CustomButtonI> = ({
         type === "fill"
           ? {
               ...styles.button,
-              ...styles.shadow,
+              ...appStyles.shadow,
               backgroundColor: color,
+              borderColor: color,
               ...(style as any),
             }
           : {
@@ -47,11 +48,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 15,
     height: 50,
+    borderWidth: 2,
   },
-  shadow: {
-    ...shadow,
-  },
-  outline: { borderWidth: 2, backgroundColor: "transperent" },
+  outline: { borderWidth: 2, backgroundColor: "none" },
 });
 
 export default CustomButton;
