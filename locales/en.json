@@ -1,7 +1,9 @@
 {
   "NM": "TV",
+
   "NAV_1": "list",
   "NAV_2": "map",
+
   "CARGO": "cargo",
   "PASSENGER": "passenger",
   "SPECIAL": "special",
